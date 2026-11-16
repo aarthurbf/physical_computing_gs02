@@ -1,0 +1,426 @@
+{
+  "version": 1,
+  "author": "Sereno SP - Global Solution 2026",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-esp32-devkit-v1",
+      "id": "esp",
+      "top": 0,
+      "left": 0,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-dht22",
+      "id": "dht1",
+      "top": -85,
+      "left": 190,
+      "attrs": {
+        "temperature": "24",
+        "humidity": "60"
+      }
+    },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd1",
+      "top": -140,
+      "left": -150,
+      "attrs": {
+        "pins": "i2c"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "ledG",
+      "top": 180,
+      "left": 270,
+      "attrs": {
+        "color": "green"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "ledY",
+      "top": 180,
+      "left": 320,
+      "attrs": {
+        "color": "yellow"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "ledR",
+      "top": 180,
+      "left": 370,
+      "attrs": {
+        "color": "red"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "rG",
+      "top": 235,
+      "left": 262,
+      "rotate": 90,
+      "attrs": {
+        "value": "220"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "rY",
+      "top": 235,
+      "left": 312,
+      "rotate": 90,
+      "attrs": {
+        "value": "220"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "rR",
+      "top": 235,
+      "left": 362,
+      "rotate": 90,
+      "attrs": {
+        "value": "220"
+      }
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": 100,
+      "left": 440,
+      "attrs": {
+        "volume": "0.1"
+      }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btnSil",
+      "top": 300,
+      "left": 100,
+      "attrs": {
+        "color": "yellow",
+        "label": "Silenciar"
+      }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btnRef",
+      "top": 300,
+      "left": 220,
+      "attrs": {
+        "color": "blue",
+        "label": "Refrescar"
+      }
+    },
+    {
+      "type": "wokwi-relay-module",
+      "id": "rele1",
+      "top": 380,
+      "left": 380,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-led",
+      "id": "ledB",
+      "top": 300,
+      "left": 470,
+      "attrs": {
+        "color": "blue",
+        "label": "Nevoa"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "rB",
+      "top": 355,
+      "left": 462,
+      "rotate": 90,
+      "attrs": {
+        "value": "220"
+      }
+    },
+    {
+      "type": "wokwi-hc-sr04",
+      "id": "ultra1",
+      "top": -150,
+      "left": 330,
+      "attrs": {
+        "distance": "10"
+      }
+    }
+  ],
+  "connections": [
+    [
+      "esp:TX0",
+      "$serialMonitor:RX",
+      "",
+      []
+    ],
+    [
+      "esp:RX0",
+      "$serialMonitor:TX",
+      "",
+      []
+    ],
+    [
+      "esp:3V3",
+      "dht1:VCC",
+      "red",
+      [
+        "h0"
+      ]
+    ],
+    [
+      "esp:GND.2",
+      "dht1:GND",
+      "black",
+      [
+        "h0"
+      ]
+    ],
+    [
+      "esp:D15",
+      "dht1:SDA",
+      "green",
+      [
+        "h0"
+      ]
+    ],
+    [
+      "esp:VIN",
+      "lcd1:VCC",
+      "red",
+      [
+        "h0"
+      ]
+    ],
+    [
+      "esp:GND.1",
+      "lcd1:GND",
+      "black",
+      [
+        "h0"
+      ]
+    ],
+    [
+      "esp:D21",
+      "lcd1:SDA",
+      "blue",
+      [
+        "h0"
+      ]
+    ],
+    [
+      "esp:D22",
+      "lcd1:SCL",
+      "purple",
+      [
+        "h0"
+      ]
+    ],
+    [
+      "esp:D25",
+      "rG:1",
+      "green",
+      [
+        "h0"
+      ]
+    ],
+    [
+      "rG:2",
+      "ledG:A",
+      "green",
+      [
+        "h0"
+      ]
+    ],
+    [
+      "ledG:C",
+      "esp:GND.2",
+      "black",
+      [
+        "h0"
+      ]
+    ],
+    [
+      "esp:D26",
+      "rY:1",
+      "gold",
+      [
+        "h0"
+      ]
+    ],
+    [
+      "rY:2",
+      "ledY:A",
+      "gold",
+      [
+        "h0"
+      ]
+    ],
+    [
+      "ledY:C",
+      "esp:GND.2",
+      "black",
+      [
+        "h0"
+      ]
+    ],
+    [
+      "esp:D27",
+      "rR:1",
+      "red",
+      [
+        "h0"
+      ]
+    ],
+    [
+      "rR:2",
+      "ledR:A",
+      "red",
+      [
+        "h0"
+      ]
+    ],
+    [
+      "ledR:C",
+      "esp:GND.2",
+      "black",
+      [
+        "h0"
+      ]
+    ],
+    [
+      "esp:D13",
+      "bz1:2",
+      "orange",
+      [
+        "h0"
+      ]
+    ],
+    [
+      "bz1:1",
+      "esp:GND.2",
+      "black",
+      [
+        "h0"
+      ]
+    ],
+    [
+      "esp:D14",
+      "btnSil:1.l",
+      "yellow",
+      [
+        "h0"
+      ]
+    ],
+    [
+      "btnSil:2.l",
+      "esp:GND.1",
+      "black",
+      [
+        "h0"
+      ]
+    ],
+    [
+      "esp:D12",
+      "btnRef:1.l",
+      "blue",
+      [
+        "h0"
+      ]
+    ],
+    [
+      "btnRef:2.l",
+      "esp:GND.1",
+      "black",
+      [
+        "h0"
+      ]
+    ],
+    [
+      "esp:D32",
+      "rele1:IN",
+      "cyan",
+      [
+        "h0"
+      ]
+    ],
+    [
+      "esp:VIN",
+      "rele1:VCC",
+      "red",
+      [
+        "h0"
+      ]
+    ],
+    [
+      "esp:GND.2",
+      "rele1:GND",
+      "black",
+      [
+        "h0"
+      ]
+    ],
+    [
+      "esp:D33",
+      "rB:1",
+      "blue",
+      [
+        "h0"
+      ]
+    ],
+    [
+      "rB:2",
+      "ledB:A",
+      "blue",
+      [
+        "h0"
+      ]
+    ],
+    [
+      "ledB:C",
+      "esp:GND.2",
+      "black",
+      [
+        "h0"
+      ]
+    ],
+    [
+      "esp:D5",
+      "ultra1:TRIG",
+      "orange",
+      [
+        "h0"
+      ]
+    ],
+    [
+      "esp:D18",
+      "ultra1:ECHO",
+      "purple",
+      [
+        "h0"
+      ]
+    ],
+    [
+      "esp:VIN",
+      "ultra1:VCC",
+      "red",
+      [
+        "h0"
+      ]
+    ],
+    [
+      "esp:GND.1",
+      "ultra1:GND",
+      "black",
+      [
+        "h0"
+      ]
+    ]
+  ],
+  "dependencies": {}
+}
